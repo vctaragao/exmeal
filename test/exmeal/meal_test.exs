@@ -10,40 +10,28 @@ defmodule Exmeal.MealTest do
 
   describe "changeset/1" do
     test "When given valid params create a valid meal changeset from schema", setup do
-      changeset = Meal.changeset(setup[:params])
+      {:ok, changeset} = Meal.changeset(setup[:params])
 
-      assert changeset.valid?()
-      assert changeset.errors() == []
+      assert changeset.valid?
+      assert changeset.errors == []
     end
-  end
 
-  test "When given an invalid date returns an error", setup do
-    params = %{setup[:params] | date: "10/10/2022"}
+    test "When given an invalid date returns an error", setup do
+      params = %{setup[:params] | date: "10/10/2022"}
 
-    changeset = Meal.changeset(params)
+      assert {:error, "date is invalid"} = Meal.changeset(params)
+    end
 
-    assert false == changeset.valid?()
-    assert [date: {message, _reason}] = changeset.errors()
-    assert "is invalid" == message
-  end
+    test "When given an invalid description returns an error", setup do
+      params = %{setup[:params] | description: 123.4}
 
-  test "When given an invalid description returns an error", setup do
-    params = %{setup[:params] | description: 123.4}
+      assert {:error, "description is invalid"} = Meal.changeset(params)
+    end
 
-    changeset = Meal.changeset(params)
+    test "When given an invalid calories returns an error", setup do
+      params = %{setup[:params] | calories: "helllo"}
 
-    assert false == changeset.valid?()
-    assert [description: {message, _reason}] = changeset.errors()
-    assert "is invalid" == message
-  end
-
-  test "When given an invalid calories returns an error", setup do
-    params = %{setup[:params] | calories: "helllo"}
-
-    changeset = Meal.changeset(params)
-
-    assert false == changeset.valid?()
-    assert [calories: {message, _reason}] = changeset.errors()
-    assert "is invalid" == message
+      assert {:error, "calories is invalid"} = Meal.changeset(params)
+    end
   end
 end
