@@ -23,14 +23,10 @@ defmodule Exmeal.Meal do
   end
 
   defp handle_changeset(%Changeset{} = changeset) do
-    if changeset.valid? do
-      {:ok, changeset}
-    else
-      handle_changeset_error(changeset.errors)
-    end
+    if changeset.valid?, do: {:ok, changeset}, else: handle_error(changeset.errors)
   end
 
-  defp handle_changeset_error([{field, {reason, _}} | _]) do
-    {:error, "#{Atom.to_string(field)} #{reason}"}
+  defp handle_error([{field, {reason, _}} | _]) do
+    {:error, info: %{field: Atom.to_string(field), reason: reason}}
   end
 end

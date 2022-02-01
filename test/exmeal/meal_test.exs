@@ -19,19 +19,20 @@ defmodule Exmeal.MealTest do
     test "When given an invalid date returns an error", setup do
       params = %{setup[:params] | date: "10/10/2022"}
 
-      assert {:error, "date is invalid"} = Meal.changeset(params)
+      assert {:error, [info: %{field: "date", reason: "is invalid"}]} = Meal.changeset(params)
     end
 
     test "When given an invalid description returns an error", setup do
       params = %{setup[:params] | description: 123.4}
 
-      assert {:error, "description is invalid"} = Meal.changeset(params)
+      assert {:error, [info: %{field: "description", reason: "is invalid"}]} =
+               Meal.changeset(params)
     end
 
     test "When given an invalid calories returns an error", setup do
       params = %{setup[:params] | calories: "helllo"}
 
-      assert {:error, "calories is invalid"} = Meal.changeset(params)
+      assert {:error, [info: %{field: "calories", reason: "is invalid"}]} = Meal.changeset(params)
     end
   end
 end

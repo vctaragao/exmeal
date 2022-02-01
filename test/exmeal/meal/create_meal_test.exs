@@ -1,15 +1,14 @@
 defmodule Exmeal.Meal.CreateMealTest do
-  use Exmeal.DataCase
+  use Exmeal.DataCase, async: false
 
   alias Exmeal.Meal.CreateMeal
+  alias Exmeal.Meal
 
   setup_all do
     params = %{
-      description: "descrição",
-      date: "28/01/1998",
-      hour: "2",
-      minute: "10",
-      calories: 100.50
+      calories: 100.50,
+      date: DateTime.utc_now(),
+      description: "descrição"
     }
 
     {:ok, params: params}
@@ -17,9 +16,7 @@ defmodule Exmeal.Meal.CreateMealTest do
 
   describe "call/1" do
     test "When given valid params create a valid meal record", setup do
-      response = CreateMeal.call(setup[:params])
-
-      assert is_integer(response)
+      assert {:ok, %Meal{}} = CreateMeal.call(setup[:params])
     end
 
     test "When given invalid params value create a valid meal record", setup do
@@ -27,7 +24,8 @@ defmodule Exmeal.Meal.CreateMealTest do
 
       response = CreateMeal.call(params)
 
-      assert {:error, "Não foi possível criar refeição: campo description is invalid"} = response
+      assert {:error, "Can't register meal",
+              [reason: [info: %{field: "description", reason: "is invalid"}]]} == response
     end
 
     test "When given invalid params key create a valid meal record", setup do
@@ -38,8 +36,7 @@ defmodule Exmeal.Meal.CreateMealTest do
 
       response = CreateMeal.call(params)
 
-      assert {:error, "Não foi possível criar refeição: campo description can't be blank"} ==
-               response
+      assert {:error, "Can't register meal", [reason: "invalid params"]} == response
     end
   end
 end
