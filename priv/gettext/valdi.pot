@@ -1,0 +1,107 @@
+## This file is a PO Template file.
+##
+## "msgid"s here are often extracted from source code.
+## Add new translations manually only if they're dynamic
+## translations that can't be statically extracted.
+##
+## Run "mix gettext.extract" to bring this file up to
+## date. Leave "msgstr"s empty as changing them here has no
+## effect: edit them in PO (.po) files instead.
+msgid ""
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:436
+msgid "does not match format"
+msgstr "não corresponde ao formato"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:440
+msgid "format check only support string"
+msgstr "checagem do formato apenas suporta string"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:465
+#: lib/valdi.ex:480
+msgid "given condition does not implement protocol Enumerable"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:178
+msgid "is invalid"
+msgstr "não é valido"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:236
+msgid "is not a %{type}"
+msgstr "não é um type"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:233
+msgid "is not an array"
+msgstr "não é um array"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:280
+msgid "is required"
+msgstr "é obrigatório"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:410
+msgid "length %{msg}"
+msgstr "tamanho "
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:407
+msgid "length check supports only lists, binaries, maps and tuples"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:314
+msgid "must be a number"
+msgstr "deve ser um numero"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:323
+msgid "must be equal to %{check_value}"
+msgstr "deve ser igual a %{check_value}"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:332
+msgid "must be greater than %{check_value}"
+msgstr "deve ser maio que %{check_value}"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:341
+msgid "must be greater than or equal to %{check_value}"
+msgstr "deve ser maio ou igual a %{check_value}"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:356
+msgid "must be less than %{check_value}"
+msgstr "deve ser menor que ${check_value}"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:365
+msgid "must be less than or equal to %{check_value}"
+msgstr "deve ser ou igual a %{check_value}"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:475
+msgid "must not be in the exclusion list"
+msgstr "não deve estar na lista de exclusão"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:462
+msgid "not be in the inclusion list"
+msgstr "não está incluso"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:378
+msgid "unknown check %{check}"
+msgstr "check desconhecido %{check}"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:162
+msgid "validate_%{name} is not support"
+msgstr ""

@@ -1,0 +1,108 @@
+## "msgid"s in this file come from POT (.pot) files.
+##
+## Do not add, change, or remove "msgid"s manually here as
+## they're tied to the ones in the corresponding POT file
+## (with the same domain).
+##
+## Use "mix gettext.extract --merge" or "mix gettext.merge"
+## to merge POT files into PO files.
+msgid ""
+msgstr ""
+"Language: pt_BR\n"
+"Plural-Forms: nplurals=2\n"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:436
+msgid "does not match format"
+msgstr "não corresponde ao formato"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:440
+msgid "format check only support string"
+msgstr "checagem de formate apenas suporta strings"
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:465
+#: lib/valdi.ex:480
+msgid "given condition does not implement protocol Enumerable"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:178
+msgid "is invalid"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:236
+msgid "is not a %{type}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:233
+msgid "is not an array"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:280
+msgid "is required"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:410
+msgid "length %{msg}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:407
+msgid "length check supports only lists, binaries, maps and tuples"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:314
+msgid "must be a number"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:323
+msgid "must be equal to %{check_value}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:332
+msgid "must be greater than %{check_value}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:341
+msgid "must be greater than or equal to %{check_value}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:356
+msgid "must be less than %{check_value}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:365
+msgid "must be less than or equal to %{check_value}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:475
+msgid "must not be in the exclusion list"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:462
+msgid "not be in the inclusion list"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:378
+msgid "unknown check %{check}"
+msgstr ""
+
+#, elixir-format, ex-autogen
+#: lib/valdi.ex:162
+msgid "validate_%{name} is not support"
+msgstr ""
