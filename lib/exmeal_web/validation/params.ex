@@ -6,6 +6,13 @@ defmodule ExmealWeb.Validation.Params do
 
   defp handle_validation_result({:ok, result}), do: {:ok, result}
 
-  defp handle_validation_result({:error, reason}),
-    do: {:error, "Erro de validação", reason: reason, domain: "valdi"}
+  defp handle_validation_result({:error, reason}) do
+    [first | _] = Map.keys(reason)
+
+    {
+      :error,
+      "Erro de validação",
+      %{reason: {Atom.to_string(first), List.first(reason[first])}, domain: "valdi"}
+    }
+  end
 end

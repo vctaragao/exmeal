@@ -1,5 +1,5 @@
-defmodule Exmeal.Helper.Date do
-  @spec format_datetime(String.t(), String.t(), String.t()) ::
+defmodule ExmealWeb.Helper.Date do
+  @spec format_to_datetime(String.t(), String.t(), String.t()) ::
           {:error,
            :incompatible_calendars
            | :invalid_date
@@ -7,7 +7,7 @@ defmodule Exmeal.Helper.Date do
            | :invalid_time
            | :missing_offset}
           | {:ok, DateTime.t(), integer}
-  def format_datetime(date, hour, minute) do
+  def format_to_datetime(date, hour, minute) do
     date = format_date(date)
     time = format_time(hour, minute)
 

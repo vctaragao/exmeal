@@ -27,6 +27,18 @@ defmodule ExmealWeb do
     end
   end
 
+  def exmeal_controller do
+    quote do
+      use ExmealWeb, :controller
+
+      alias Exmeal
+      alias ExmealWeb.Validation.Params
+      alias ExmealWeb.FallbackController
+
+      action_fallback FallbackController
+    end
+  end
+
   def view do
     quote do
       use Phoenix.View,

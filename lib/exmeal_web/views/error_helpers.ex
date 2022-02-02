@@ -6,7 +6,7 @@ defmodule ExmealWeb.ErrorHelpers do
   @doc """
   Translates an error message using gettext.
   """
-  def translate_error({msg, opts}) do
+  def translate_error(msg, domain, opts \\ %{}) do
     # When using gettext, we typically pass the strings we want
     # to translate as a static argument:
     #
@@ -25,9 +25,9 @@ defmodule ExmealWeb.ErrorHelpers do
     # should be written to the errors.po file. The :count option is
     # set by Ecto and indicates we should also apply plural rules.
     if count = opts[:count] do
-      Gettext.dngettext(ExmealWeb.Gettext, "errors", msg, msg, count, opts)
+      Gettext.dngettext(ExmealWeb.Gettext, domain, msg, msg, count, opts)
     else
-      Gettext.dgettext(ExmealWeb.Gettext, "errors", msg, opts)
+      Gettext.dgettext(ExmealWeb.Gettext, domain, msg, opts)
     end
   end
 end
