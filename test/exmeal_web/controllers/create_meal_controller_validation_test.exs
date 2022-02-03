@@ -1,4 +1,4 @@
-defmodule ExmealWeb.MealControllerValidationTest do
+defmodule ExmealWeb.CreateMealControllerValidationTest do
   use ExmealWeb.ConnCase
 
   @params %{
@@ -11,7 +11,8 @@ defmodule ExmealWeb.MealControllerValidationTest do
 
   describe "call/2" do
     test "When given invalid params returns an error", %{conn: conn} do
-      response = post(conn, Routes.meal_path(conn, :create, %{@params | date: "28-01/2022"}))
+      response =
+        post(conn, Routes.create_meal_path(conn, :index), %{@params | date: "28-01/2022"})
 
       assert body = json_response(response, :bad_request)
       assert "Erro de validação" == body["message"]

@@ -1,4 +1,4 @@
-defmodule ExmealWeb.MealControllerTest do
+defmodule ExmealWeb.CreateMealControllerTest do
   use ExmealWeb.ConnCase
 
   @params %{
@@ -11,7 +11,7 @@ defmodule ExmealWeb.MealControllerTest do
 
   describe "call/2" do
     test "When given valid params return a Meal id", %{conn: conn} do
-      response = post(conn, Routes.meal_path(conn, :create, @params))
+      response = post(conn, Routes.create_meal_path(conn, :index, @params))
 
       assert body = json_response(response, :created)
 

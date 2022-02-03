@@ -1,7 +1,9 @@
-defmodule ExmealWeb.MealController do
+defmodule ExmealWeb.CreateMealController do
   use ExmealWeb, :exmeal_controller
 
   import ExmealWeb.Helper.Date
+
+  alias ExmealWeb.MealView
 
   @create_validation %{
     description: [type: :string, required: true, length: [min: 5, max: 140]],
@@ -11,7 +13,7 @@ defmodule ExmealWeb.MealController do
     calories: [type: :float, required: true]
   }
 
-  def create(conn, params) do
+  def index(conn, params) do
     with {:ok, params} <- Params.validate(params, @create_validation),
          {:ok, datetime, _} <- format_to_datetime(params[:date], params[:hour], params[:minute]),
          {:ok, meal} <-
@@ -22,6 +24,7 @@ defmodule ExmealWeb.MealController do
            }) do
       conn
       |> put_status(:created)
+      |> put_view(MealView)
       |> render("create.json", meal_id: meal.id)
     end
   end
