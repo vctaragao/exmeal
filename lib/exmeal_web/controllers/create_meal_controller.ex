@@ -8,8 +8,8 @@ defmodule ExmealWeb.CreateMealController do
   @create_validation %{
     description: [type: :string, required: true, length: [min: 5, max: 140]],
     date: [type: :string, required: true, format: ~r/\d{2}\/\d{2}\/\d{4}/],
-    hour: [type: :string, required: true, length: [min: 2, max: 2]],
-    minute: [type: :string, required: true, length: [min: 2, max: 2]],
+    hour: [type: :integer, required: true, number: [min: 0, max: 23]],
+    minute: [type: :integer, required: true, number: [min: 0, max: 59]],
     calories: [type: :float, required: true]
   }
 

@@ -1,5 +1,5 @@
 defmodule Exmeal.MealTest do
-  use Exmeal.DataCase
+  use Exmeal.DataCase, async: true
 
   alias Exmeal.Meal
 

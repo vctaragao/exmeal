@@ -17,9 +17,32 @@ defmodule ExmealWeb.ErrorView do
   end
 
   def render("400.json", %{message: msg, reason: {field, reason}, domain: domain}) do
+    translated_error =
+      split_reason_and_value(reason)
+      |> translate_reason(domain)
+
     %{
       message: msg,
-      data: %{field: field, error: translate_error(reason, domain)}
+      data: %{field: field, error: translated_error}
     }
   end
+
+  defp split_reason_and_value(reason) do
+    {value, reason_list} = reason |> String.split(" ") |> List.pop_at(-1)
+
+    case Integer.parse(value) do
+      {int_value, _} -> {:ok, {preapre_reason_with_value(reason_list), int_value}}
+      :error -> {:error, reason}
+    end
+  end
+
+  defp preapre_reason_with_value(reason_list) do
+    reason = Enum.join(reason_list, " ")
+    reason <> " %{value}"
+  end
+
+  defp translate_reason({:ok, {reason, value}}, domain),
+    do: translate_error(reason, domain, %{value: value})
+
+  defp translate_reason({:error, reason}, domain), do: translate_error(reason, domain)
 end

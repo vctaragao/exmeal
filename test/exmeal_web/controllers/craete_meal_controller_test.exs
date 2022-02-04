@@ -1,11 +1,11 @@
 defmodule ExmealWeb.CreateMealControllerTest do
-  use ExmealWeb.ConnCase
+  use ExmealWeb.ConnCase, async: true
 
   @params %{
     description: "descrição",
     date: "28/01/2022",
-    hour: "10",
-    minute: "10",
+    hour: 10,
+    minute: 10,
     calories: 100
   }
 

@@ -31,5 +31,8 @@ defmodule ExmealWeb.Helper.Date do
     "#{hour}:#{minute}:#{seconds}"
   end
 
-  defp pad_time(time), do: String.pad_leading(time, 2, "00")
+  defp pad_time(time) when is_bitstring(time), do: String.pad_leading(time, 2, "00")
+
+  defp pad_time(time) when is_integer(time),
+    do: time |> Integer.to_string() |> String.pad_leading(2, "00")
 end

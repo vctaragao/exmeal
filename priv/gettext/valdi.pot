@@ -28,7 +28,7 @@ msgstr ""
 
 #, elixir-format, ex-autogen
 #: lib/valdi.ex:178
-msgid "is invalid"
+msgid "is in valid"
 msgstr "não é valido"
 
 #, elixir-format, ex-autogen
