@@ -5,11 +5,7 @@ defmodule Exmeal.Meal.CreateMealTest do
   alias Exmeal.Meal
 
   setup_all do
-    params = %{
-      calories: 100.50,
-      date: DateTime.utc_now(),
-      description: "descrição"
-    }
+    params = build(:meal_params)
 
     {:ok, params: params}
   end
