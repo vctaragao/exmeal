@@ -24,6 +24,8 @@ defmodule Exmeal.DataCase do
       import Ecto.Changeset
       import Ecto.Query
       import Exmeal.DataCase
+
+      import Exmeal.Factory
     end
   end
 
