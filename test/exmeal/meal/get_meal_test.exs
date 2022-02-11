@@ -12,5 +12,17 @@ defmodule Exmeal.Meal.GetMealTest do
 
       assert expected_meal == meal
     end
+
+    test "When given an invalid id returns an error" do
+      {:ok, expected_meal} = build(:meal) |> Repo.insert()
+
+      assert {:error, "id is invalid"} = GetMeal.call(%{id: expected_meal.id + 1})
+    end
+
+    test "When given an invalid id param returns an error" do
+      build(:meal) |> Repo.insert()
+
+      assert {:error, "Invalid params"} = GetMeal.call(%{id: "string"})
+    end
   end
 end
