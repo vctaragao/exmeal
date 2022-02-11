@@ -9,5 +9,5 @@ defmodule Exmeal.GetMeal do
   defp get_meal(id), do: Repo.get(Meal, id)
 
   defp handle_result(%Meal{} = meal), do: {:ok, meal}
-  defp handle_result(nil), do: {:error, "id is invalid"}
+  defp handle_result(nil), do: {:ok, %{}}
 end
