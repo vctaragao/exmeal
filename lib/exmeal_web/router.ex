@@ -10,6 +10,7 @@ defmodule ExmealWeb.Router do
 
     # resources "/meal", MealController, except: [:new, :edit]
     post "/meal", CreateMealController, :index
+    get "/meal/:id", ShowMealController, :index
   end
 
   # Enables LiveDashboard only for development

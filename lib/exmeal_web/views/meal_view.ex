@@ -7,4 +7,16 @@ defmodule ExmealWeb.MealView do
       data: %{meal_id: meal_id}
     }
   end
+
+  def render("show.json", %{meal: meal}) do
+    %{
+      message: "Refeição retornada com sucesso",
+      data: %{
+        id: meal.id,
+        description: meal.description,
+        date: DateTime.to_string(meal.date),
+        calories: meal.calories
+      }
+    }
+  end
 end

@@ -7,6 +7,8 @@ defmodule Exmeal.Meal do
 
   @fields [:description, :date, :calories]
 
+  @derive Jason.Encoder
+
   schema "meal" do
     field :description, :string
     field :date, :utc_datetime
