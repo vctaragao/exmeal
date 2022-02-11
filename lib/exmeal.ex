@@ -7,7 +7,8 @@ defmodule Exmeal do
   if it comes from the database, an external API or others.
   """
 
-  alias Exmeal.Meal.CreateMeal
+  alias Exmeal.{CreateMeal, GetMeal}
 
   defdelegate create_meal(params), to: CreateMeal, as: :call
+  defdelegate get_meal(params), to: GetMeal, as: :call
 end

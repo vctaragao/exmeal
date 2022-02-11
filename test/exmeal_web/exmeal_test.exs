@@ -1,7 +1,7 @@
 defmodule ExmealWeb.Test.ExmealTest do
   use Exmeal.DataCase, async: true
 
-  alias Exmeal.Meal.CreateMeal
+  alias Exmeal.CreateMeal
   alias Exmeal.Meal
 
   setup_all do
