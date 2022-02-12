@@ -17,8 +17,8 @@ defmodule Exmeal.Meal do
     timestamps()
   end
 
-  def changeset(params) do
-    %__MODULE__{}
+  def changeset(meal \\ %__MODULE__{}, params) do
+    meal
     |> cast(params, @fields)
     |> validate_required(@fields)
     |> handle_changeset()
