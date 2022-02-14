@@ -34,6 +34,7 @@ defmodule ExmealWeb do
       alias Exmeal
       alias ExmealWeb.Validation.Params
       alias ExmealWeb.FallbackController
+      alias ExmealWeb.MealView
 
       action_fallback FallbackController
     end
