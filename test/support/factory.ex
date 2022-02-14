@@ -11,6 +11,16 @@ defmodule Exmeal.Factory do
     }
   end
 
+  def meal_action_params_factory do
+    %{
+      description: "descrição",
+      date: "28/01/2022",
+      hour: 10,
+      minute: 10,
+      calories: 100
+    }
+  end
+
   def meal_factory do
     %Meal{
       id: 1,

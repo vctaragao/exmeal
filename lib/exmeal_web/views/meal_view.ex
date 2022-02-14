@@ -28,4 +28,11 @@ defmodule ExmealWeb.MealView do
       data: %{}
     }
   end
+
+  def render("update.json", %{meal_id: meal_id}) do
+    %{
+      message: "Refeição atualizada com sucesso",
+      data: %{meal_id: meal_id}
+    }
+  end
 end

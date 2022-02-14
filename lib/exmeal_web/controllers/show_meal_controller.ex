@@ -13,7 +13,7 @@ defmodule ExmealWeb.ShowMealController do
       conn
       |> put_status(:ok)
       |> put_view(MealView)
-      |> render("show.json", meal: meal)
+      |> render("show.json", message: "Refeição retornada com sucesso", meal: meal)
     end
   end
 end
