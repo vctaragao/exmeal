@@ -17,9 +17,7 @@ defmodule ExmealWeb.ErrorView do
   end
 
   def render("400.json", %{message: msg, reason: {field, reason}, domain: domain}) do
-    translated_error =
-      split_reason_and_value(reason)
-      |> translate_reason(domain)
+    translated_error = split_reason_and_value(reason) |> translate_reason(domain)
 
     %{
       message: msg,

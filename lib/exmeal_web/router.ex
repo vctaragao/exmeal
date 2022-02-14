@@ -11,6 +11,7 @@ defmodule ExmealWeb.Router do
     post "/meal", CreateMealController, :index
     get "/meal/:id", ShowMealController, :index
     patch "/meal/:id", UpdateMealController, :index
+    delete "/meal/:id", DeleteMealController, :index
   end
 
   # Enables LiveDashboard only for development

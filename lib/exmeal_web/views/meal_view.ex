@@ -35,4 +35,11 @@ defmodule ExmealWeb.MealView do
       data: %{meal_id: meal_id}
     }
   end
+
+  def render("delete.json", _) do
+    %{
+      message: "Refeição removida com sucesso",
+      data: %{}
+    }
+  end
 end
