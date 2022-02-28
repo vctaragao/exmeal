@@ -1,9 +1,9 @@
-defmodule Exmeal.UpdateMealTest do
+defmodule Exmeal.Meal.UpdateTest do
   use Exmeal.DataCase, asyn: true
 
   import Exmeal.Factory
 
-  alias Exmeal.UpdateMeal
+  alias Exmeal.Meal.Update
   alias Exmeal.Repo
 
   setup do
@@ -16,7 +16,7 @@ defmodule Exmeal.UpdateMealTest do
       meal_updated = %{setup[:meal] | description: "atualizada"}
 
       assert {:ok, meal_result} =
-               UpdateMeal.call(%{
+               Update.call(%{
                  id: meal_updated.id,
                  description: meal_updated.description,
                  calories: meal_updated.calories,
@@ -32,8 +32,7 @@ defmodule Exmeal.UpdateMealTest do
     test "When given invalid params returns an error", setup do
       meal = setup[:meal]
 
-      result =
-        UpdateMeal.call(%{id: meal.id, description: meal.description, calories: meal.calories})
+      result = Update.call(%{id: meal.id, description: meal.description, calories: meal.calories})
 
       assert {:error, "Can't update meal", [reason: "invalid params"]} = result
     end
@@ -42,7 +41,7 @@ defmodule Exmeal.UpdateMealTest do
       meal = setup[:meal]
 
       result =
-        UpdateMeal.call(%{
+        Update.call(%{
           id: meal.id + 1,
           description: meal.description,
           calories: meal.calories,

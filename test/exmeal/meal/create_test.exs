@@ -1,7 +1,7 @@
-defmodule Exmeal.Meal.CreateMealTest do
+defmodule Exmeal.Meal.CreateTest do
   use Exmeal.DataCase, async: true
 
-  alias Exmeal.CreateMeal
+  alias Exmeal.Meal.Create
   alias Exmeal.Meal
 
   setup_all do
@@ -12,13 +12,13 @@ defmodule Exmeal.Meal.CreateMealTest do
 
   describe "call/1" do
     test "When given valid params create a valid meal record", setup do
-      assert {:ok, %Meal{}} = CreateMeal.call(setup[:params])
+      assert {:ok, %Meal{}} = Create.call(setup[:params])
     end
 
     test "When given invalid params value create a valid meal record", setup do
       params = %{setup[:params] | description: 123}
 
-      response = CreateMeal.call(params)
+      response = Create.call(params)
 
       assert {:error, "Can't register meal",
               [reason: [info: %{field: "description", reason: "is invalid"}]]} == response
@@ -30,7 +30,7 @@ defmodule Exmeal.Meal.CreateMealTest do
         |> Map.delete(:description)
         |> Map.put(:desc, "description")
 
-      response = CreateMeal.call(params)
+      response = Create.call(params)
 
       assert {:error, "Can't register meal", [reason: "invalid params"]} == response
     end
