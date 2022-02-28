@@ -31,7 +31,7 @@ defmodule ExmealWeb do
     quote do
       use ExmealWeb, :controller
 
-      alias Exmeal
+      alias Exmeal.Facade, as: Exmeal
       alias ExmealWeb.Validation.Params
       alias ExmealWeb.FallbackController
       alias ExmealWeb.MealView
