@@ -1,4 +1,4 @@
-defmodule Exmeal.UpdateMeal do
+defmodule Exmeal.Meal.Update do
   alias Ecto.Changeset
   alias Exmeal.Repo
   alias Exmeal.Meal
