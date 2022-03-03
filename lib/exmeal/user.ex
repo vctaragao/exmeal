@@ -11,8 +11,8 @@ defmodule Exmeal.User do
     timestamps()
   end
 
-  def changeset(params) do
-    %__MODULE__{}
+  def changeset(user \\ %__MODULE__{}, params) do
+    user
     |> cast(params, @fields)
     |> validate_required(@fields)
     |> validate_format(:email, ~r/@/)

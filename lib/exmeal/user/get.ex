@@ -8,6 +8,6 @@ defmodule Exmeal.User.Get do
 
   defp get_meal(id), do: Repo.get(User, id)
 
-  defp handle_result(%User{} = user), do: {:ok, user}
   defp handle_result(nil), do: {:ok, %{}}
+  defp handle_result(user), do: {:ok, user}
 end
