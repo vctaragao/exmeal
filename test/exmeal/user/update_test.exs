@@ -1,8 +1,6 @@
 defmodule Exmeal.User.UpdateTest do
   use Exmeal.DataCase, asyn: true
 
-  import Exmeal.Factory
-
   alias Exmeal.User.Update
   alias Exmeal.Repo
 
