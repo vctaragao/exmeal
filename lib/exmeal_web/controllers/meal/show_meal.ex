@@ -1,4 +1,4 @@
-defmodule ExmealWeb.ShowMealController do
+defmodule ExmealWeb.Controller.Meal.ShowMeal do
   use ExmealWeb, :exmeal_controller
 
   alias ExmealWeb.MealView

@@ -104,3 +104,6 @@ msgstr "check desconhecido %{check}"
 #: lib/valdi.ex:162
 msgid "validate_%{name} is not support"
 msgstr ""
+
+msgid "length must be greater than or equal to 2"
+msgstr "tamanho de ser maior ou igual a 2"

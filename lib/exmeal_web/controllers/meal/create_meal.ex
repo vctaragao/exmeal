@@ -1,4 +1,4 @@
-defmodule ExmealWeb.CreateMealController do
+defmodule ExmealWeb.Controller.Meal.CreateMeal do
   use ExmealWeb, :exmeal_controller
 
   import ExmealWeb.Helper.Date
