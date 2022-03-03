@@ -1,7 +1,7 @@
 defmodule Exmeal.Factory do
   use ExMachina.Ecto, repo: Exmeal.Repo
 
-  alias Exmeal.Meal
+  alias Exmeal.{Meal, User}
 
   def meal_params_factory do
     %{
@@ -34,6 +34,15 @@ defmodule Exmeal.Factory do
     %{
       name: "Meu nome",
       cpf: "012.345.678-10",
+      email: "email@test.com"
+    }
+  end
+
+  def user_factory do
+    %User{
+      id: 1,
+      name: "Victor Moraes de Aragão",
+      cpf: "123.456.789-10",
       email: "email@test.com"
     }
   end
