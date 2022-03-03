@@ -1,4 +1,4 @@
-defmodule ExmealWeb.DeleteMealController do
+defmodule ExmealWeb.Controller.Meal.DeleteMeal do
   use ExmealWeb, :exmeal_controller
 
   @validation %{
