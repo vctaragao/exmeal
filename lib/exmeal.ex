@@ -11,8 +11,15 @@ defmodule Exmeal do
         if changeset.valid?, do: {:ok, changeset}, else: handle_error(changeset.errors)
       end
 
-      defp handle_error([{field, {reason, _}} | _]) do
+      defp handle_error([{field, {reason, [{key, value} | _]}} | _] = errors) do
+        reason =
+          if String.contains?(reason, "%"), do: format_reason(reason, key, value), else: reason
+
         {:error, info: %{field: Atom.to_string(field), reason: reason}}
+      end
+
+      defp format_reason(reason, key, value) when is_integer(value) do
+        String.replace(reason, "%{#{key}}", Integer.to_string(value))
       end
     end
   end
