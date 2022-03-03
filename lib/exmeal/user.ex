@@ -3,7 +3,7 @@ defmodule Exmeal.User do
 
   @fields [:name, :cpf, :email]
 
-  schema "users" do
+  schema "user" do
     field :name, :string
     field :cpf, :string
     field :email, :string
