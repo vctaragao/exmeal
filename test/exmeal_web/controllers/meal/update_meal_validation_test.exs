@@ -1,4 +1,4 @@
-defmodule ExmealWeb.UpdateMealControllerValidationTest do
+defmodule ExmealWeb.Controllers.Meal.UpdateMealValidationTest do
   use ExmealWeb.ConnCase, async: true
 
   import Exmeal.Factory

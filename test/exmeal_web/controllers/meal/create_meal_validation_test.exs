@@ -1,4 +1,4 @@
-defmodule ExmealWeb.CreateMealControllerValidationTest do
+defmodule ExmealWeb.Controllers.Meal.CreateMealValidationTest do
   use ExmealWeb.ConnCase, async: true
 
   @params %{
