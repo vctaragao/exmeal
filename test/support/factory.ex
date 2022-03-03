@@ -29,4 +29,12 @@ defmodule Exmeal.Factory do
       description: "descrição"
     }
   end
+
+  def user_params_factory do
+    %{
+      name: "Meu nome",
+      cpf: "012.345.678-10",
+      email: "email@test.com"
+    }
+  end
 end

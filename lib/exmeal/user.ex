@@ -1,4 +1,4 @@
-defmodule Exemal.User do
+defmodule Exmeal.User do
   use Exmeal, :schema
 
   @fields [:name, :cpf, :email]
@@ -15,6 +15,10 @@ defmodule Exemal.User do
     %__MODULE__{}
     |> cast(params, @fields)
     |> validate_required(@fields)
+    |> validate_format(:email, ~r/@/)
+    |> unique_constraint(:email)
+    |> validate_length(:name, min: 2)
+    |> validate_format(:cpf, ~r/\d{3}\.\d{3}\.\d{3}\-\d{2}/)
     |> handle_changeset()
   end
 end
