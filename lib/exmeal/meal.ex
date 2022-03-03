@@ -1,9 +1,5 @@
 defmodule Exmeal.Meal do
-  use Ecto.Schema
-
-  import Ecto.Changeset
-
-  alias Ecto.Changeset
+  use Exmeal, :schema
 
   @fields [:description, :date, :calories]
 
@@ -22,13 +18,5 @@ defmodule Exmeal.Meal do
     |> cast(params, @fields)
     |> validate_required(@fields)
     |> handle_changeset()
-  end
-
-  defp handle_changeset(%Changeset{} = changeset) do
-    if changeset.valid?, do: {:ok, changeset}, else: handle_error(changeset.errors)
-  end
-
-  defp handle_error([{field, {reason, _}} | _]) do
-    {:error, info: %{field: Atom.to_string(field), reason: reason}}
   end
 end

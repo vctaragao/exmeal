@@ -13,6 +13,7 @@ defmodule ExmealWeb.UpdateMealController do
     minute: [type: :integer, required: true, number: [min: 0, max: 59]],
     calories: [type: :float, required: true]
   }
+
   def index(conn, params) do
     with {:ok, params} <- Params.validate(params, @validation),
          {:ok, datetime, _} <- format_to_datetime(params[:date], params[:hour], params[:minute]),

@@ -1,16 +1,33 @@
 defmodule Exmeal do
-  @moduledoc """
-  Exmeal keeps the contexts that define your domain
-  and business logic.
+  def schema do
+    quote do
+      use Ecto.Schema
 
-  Contexts are also responsible for managing your data, regardless
-  if it comes from the database, an external API or others.
+      import Ecto.Changeset
+
+      alias Ecto.Changeset
+
+      defp handle_changeset(%Changeset{} = changeset) do
+        if changeset.valid?, do: {:ok, changeset}, else: handle_error(changeset.errors)
+      end
+
+      defp handle_error([{field, {reason, [{key, value} | _]}} | _] = errors) do
+        reason =
+          if String.contains?(reason, "%"), do: format_reason(reason, key, value), else: reason
+
+        {:error, info: %{field: Atom.to_string(field), reason: reason}}
+      end
+
+      defp format_reason(reason, key, value) when is_integer(value) do
+        String.replace(reason, "%{#{key}}", Integer.to_string(value))
+      end
+    end
+  end
+
+  @doc """
+  When used, dispatch to the appropriate controller/view/etc.
   """
-
-  alias Exmeal.Meal.{Create, Get, Update, Delete}
-
-  defdelegate create_meal(params), to: Create, as: :call
-  defdelegate get_meal(params), to: Get, as: :call
-  defdelegate update_meal(params), to: Update, as: :call
-  defdelegate delete_meal(params), to: Delete, as: :call
+  defmacro __using__(which) when is_atom(which) do
+    apply(__MODULE__, which, [])
+  end
 end
