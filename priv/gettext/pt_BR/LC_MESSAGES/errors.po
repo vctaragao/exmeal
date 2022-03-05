@@ -85,3 +85,9 @@ msgstr "deve ser maior ou igual a %{number}"
 
 msgid "must be equal to %{number}"
 msgstr "deve ser igual a %{number}"
+
+msgid "invalid Id"
+msgstr "Id inválido"
+
+msgid "Can't update user"
+msgstr "Não foi possível atualizar usuário"

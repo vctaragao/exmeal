@@ -1,10 +1,10 @@
-defmodule ExmealWeb.Controllers.User.CreateUserValidationTest do
+defmodule ExmealWeb.Controllers.User.UpdateUserValidationTest do
   use ExmealWeb.ConnCase, async: true
 
   import Exmeal.Factory
 
   setup_all do
-    {:ok, params: build(:user_params)}
+    {:ok, params: Map.put_new(build(:user_params), :id, 1)}
   end
 
   describe "call/2" do
@@ -34,15 +34,25 @@ defmodule ExmealWeb.Controllers.User.CreateUserValidationTest do
 
       assert "email" == data["field"]
     end
+
+    test "When given invalid id returns an error", %{conn: conn, params: params} do
+      data =
+        %{params | id: "string"}
+        |> call_route(conn)
+        |> assert_response_with_reason("não é valido")
+
+      assert "id" == data["field"]
+    end
   end
 
-  defp call_route(params, conn), do: post(conn, Routes.create_user_path(conn, :index), params)
+  defp call_route(params, conn) do
+    patch(conn, Routes.update_user_path(conn, :index, params.id, params))
+  end
 
   defp assert_response_with_reason(response, reason) do
     assert body = json_response(response, :bad_request)
     assert "Erro de validação" == body["message"]
-    assert error_reason = body["data"]["error"]
-    assert reason == error_reason
+    assert reason == body["data"]["error"]
     assert body["data"]["field"]
     body["data"]
   end
