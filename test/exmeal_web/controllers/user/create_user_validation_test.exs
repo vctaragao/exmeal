@@ -8,7 +8,7 @@ defmodule ExmealWeb.Controllers.User.CreateUserValidationTest do
   end
 
   describe "call/2" do
-    test "When given invalid name returns an error", %{conn: conn, params: params} do
+    test "When given invalid name for name returns an error", %{conn: conn, params: params} do
       data =
         %{params | name: "a"}
         |> call_route(conn)
@@ -17,68 +17,23 @@ defmodule ExmealWeb.Controllers.User.CreateUserValidationTest do
       assert "name" == data["field"]
     end
 
-    # test "When given invalid hour returns an error", %{conn: conn} do
-    #   data =
-    #     %{@params | hour: "string"}
-    #     |> call_route(conn)
-    #     |> assert_response_with_reason("não é valido")
+    test "When given invalid cpf returns an error", %{conn: conn, params: params} do
+      data =
+        %{params | cpf: "12345678910"}
+        |> call_route(conn)
+        |> assert_response_with_reason("não corresponde ao formato")
 
-    #   assert "hour" == data["field"]
-    # end
+      assert "cpf" == data["field"]
+    end
 
-    # test "When given invalid minutes returns an error", %{conn: conn} do
-    #   data =
-    #     %{@params | minute: "string"}
-    #     |> call_route(conn)
-    #     |> assert_response_with_reason("não é valido")
+    test "When given invalid email returns an error", %{conn: conn, params: params} do
+      data =
+        %{params | email: "emailinvalido.com"}
+        |> call_route(conn)
+        |> assert_response_with_reason("não corresponde ao formato")
 
-    #   assert "minute" == data["field"]
-    # end
-
-    # test "When given invalid calories returns an error", %{conn: conn} do
-    #   data =
-    #     %{@params | calories: "string"}
-    #     |> call_route(conn)
-    #     |> assert_response_with_reason("não é valido")
-
-    #   assert "calories" == data["field"]
-    # end
-
-    # test "When given hour below min value returns an error", %{conn: conn} do
-    #   data =
-    #     %{@params | hour: -1}
-    #     |> call_route(conn)
-    #     |> assert_response_with_reason("deve ser maior ou igual a 0")
-
-    #   assert "hour" == data["field"]
-    # end
-
-    # test "When given hour higher than max value returns an error", %{conn: conn} do
-    #   data =
-    #     %{@params | hour: 24}
-    #     |> call_route(conn)
-    #     |> assert_response_with_reason("deve ser menor ou igual a 23")
-
-    #   assert "hour" == data["field"]
-    # end
-
-    # test "When given minute higher than max value returns an error", %{conn: conn} do
-    #   data =
-    #     %{@params | minute: 60}
-    #     |> call_route(conn)
-    #     |> assert_response_with_reason("deve ser menor ou igual a 59")
-
-    #   assert "minute" == data["field"]
-    # end
-
-    # test "When given minute lower than min value returns an error", %{conn: conn} do
-    #   data =
-    #     %{@params | minute: -1}
-    #     |> call_route(conn)
-    #     |> assert_response_with_reason("deve ser maior ou igual a 0")
-
-    #   assert "minute" == data["field"]
-    # end
+      assert "email" == data["field"]
+    end
   end
 
   defp call_route(params, conn), do: post(conn, Routes.create_user_path(conn, :index), params)
