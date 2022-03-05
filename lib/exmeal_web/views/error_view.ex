@@ -25,6 +25,15 @@ defmodule ExmealWeb.ErrorView do
     }
   end
 
+  def render("400.json", %{message: msg, reason: reason, domain: domain}) do
+    translated_error = split_reason_and_value(reason) |> translate_reason(domain)
+
+    %{
+      message: translate_error(msg, domain),
+      data: %{error: translated_error}
+    }
+  end
+
   defp split_reason_and_value(reason) do
     {value, reason_list} = reason |> String.split(" ") |> List.pop_at(-1)
 

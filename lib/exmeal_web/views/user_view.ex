@@ -27,12 +27,12 @@ defmodule ExmealWeb.UserView do
   #   }
   # end
 
-  # def render("update.json", %{meal_id: meal_id}) do
-  #   %{
-  #     message: "Refeição atualizada com sucesso",
-  #     data: %{meal_id: meal_id}
-  #   }
-  # end
+  def render("update.json", %{user_id: id}) do
+    %{
+      message: "Usuário atualizado com sucesso",
+      data: %{user_id: id}
+    }
+  end
 
   # def render("delete.json", _) do
   #   %{
