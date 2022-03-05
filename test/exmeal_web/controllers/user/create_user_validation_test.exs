@@ -12,7 +12,7 @@ defmodule ExmealWeb.Controllers.User.CreateUserValidationTest do
       data =
         %{params | name: "a"}
         |> call_route(conn)
-        |> assert_response_with_reason("não corresponde ao formato")
+        |> assert_response_with_reason("tamanho deve ser maior ou igual a 2")
 
       assert "name" == data["field"]
     end

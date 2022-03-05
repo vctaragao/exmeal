@@ -3,12 +3,10 @@ defmodule ExmealWeb.FallbackController do
 
   alias ExmealWeb.ErrorView
 
-  def call(conn, {:error, msg, %{reason: reason, domain: domain} = error}) do
-    IO.inspect(error)
-
+  def call(conn, {:error, msg, %{reason: reason, domain: domain}}) do
     conn
     |> put_status(:bad_request)
     |> put_view(ErrorView)
     |> render("400.json", %{message: msg, reason: reason, domain: domain})
-  endz
+  end
 end
