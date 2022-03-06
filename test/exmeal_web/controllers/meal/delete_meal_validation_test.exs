@@ -1,33 +1,29 @@
 defmodule ExmealWeb.Controllers.Meal.DeleteMealValidationTest do
   use ExmealWeb.ConnCase, async: true
 
-  import Exmeal.Factory
-
-  alias Exmeal.Repo
-  alias Exmeal.Meal
+  @params %{
+    id: "string"
+  }
 
   describe "call/2" do
-    test "When given valid params return a Meal", %{conn: conn} do
-      {:ok, %Meal{id: id}} = build(:meal) |> Repo.insert()
+    test "When given invalid id returns an error", %{conn: conn} do
+      data =
+        @params[:id]
+        |> call_route(conn)
+        |> assert_response_with_reason("não é valido")
 
-      response = delete(conn, Routes.delete_meal_path(conn, :index, id))
-
-      assert body = json_response(response, :no_content)
-
-      assert %{"message" => "Refeição removida com sucesso", "data" => %{}} = body
+      assert "id" == data["field"]
     end
+  end
 
-    test "When given an invalid id returns an error", %{conn: conn} do
-      {:ok, %Meal{id: id}} = build(:meal) |> Repo.insert()
+  defp call_route(params, conn),
+    do: delete(conn, Routes.delete_meal_path(conn, :index, params))
 
-      response = delete(conn, Routes.delete_meal_path(conn, :index, id + 1))
-
-      assert body = json_response(response, :bad_request)
-
-      assert %{
-               "data" => %{"error" => "Invalid", "field" => "id"},
-               "message" => "Can't remove meal"
-             } = body
-    end
+  defp assert_response_with_reason(response, reason) do
+    assert body = json_response(response, :bad_request)
+    assert "Erro de validação" == body["message"]
+    assert reason == body["data"]["error"]
+    assert body["data"]["field"]
+    body["data"]
   end
 end

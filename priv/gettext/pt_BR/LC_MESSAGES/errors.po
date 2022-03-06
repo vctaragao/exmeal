@@ -91,3 +91,6 @@ msgstr "Id inválido"
 
 msgid "Can't update user"
 msgstr "Não foi possível atualizar usuário"
+
+msgid "Can't remove user"
+msgstr "Não foi possível remover usuário"

@@ -36,10 +36,10 @@ defmodule ExmealWeb.UserView do
     }
   end
 
-  # def render("delete.json", _) do
-  #   %{
-  #     message: "Refeição removida com sucesso",
-  #     data: %{}
-  #   }
-  # end
+  def render("delete.json", _) do
+    %{
+      message: "Usuário removido com sucesso",
+      data: %{}
+    }
+  end
 end
