@@ -1,4 +1,4 @@
-defmodule ExmealWeb.Controllers.Meal.DeleteMealValidationTest do
+defmodule ExmealWeb.Controllers.User.DeleteUserValidationTest do
   use ExmealWeb.ConnCase, async: true
 
   @params %{
@@ -17,7 +17,7 @@ defmodule ExmealWeb.Controllers.Meal.DeleteMealValidationTest do
   end
 
   defp call_route(params, conn),
-    do: delete(conn, Routes.delete_meal_path(conn, :index, params))
+    do: delete(conn, Routes.delete_user_path(conn, :index, params))
 
   defp assert_response_with_reason(response, reason) do
     assert body = json_response(response, :bad_request)

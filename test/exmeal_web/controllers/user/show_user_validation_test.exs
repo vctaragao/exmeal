@@ -1,4 +1,4 @@
-defmodule ExmealWeb.Controllers.Meal.DeleteMealTest do
+defmodule ExmealWeb.Controllers.User.ShowUserValidationTest do
   use ExmealWeb.ConnCase, async: true
 
   @params %{
@@ -16,13 +16,13 @@ defmodule ExmealWeb.Controllers.Meal.DeleteMealTest do
     end
   end
 
-  defp call_route(params, conn),
-    do: delete(conn, Routes.delete_meal_path(conn, :index, params))
+  defp call_route(params, conn), do: get(conn, Routes.show_user_path(conn, :index, params))
 
   defp assert_response_with_reason(response, reason) do
     assert body = json_response(response, :bad_request)
     assert "Erro de validação" == body["message"]
-    assert reason == body["data"]["error"]
+    assert error_reason = body["data"]["error"]
+    assert reason == error_reason
     assert body["data"]["field"]
     body["data"]
   end

@@ -1,6 +1,8 @@
 defmodule ExmealWeb.UserView do
   use ExmealWeb, :view
 
+  alias Exmeal.User
+
   def render("create.json", %{user_id: id}) do
     %{
       message: "Usuário criado com sucesso",
@@ -8,24 +10,24 @@ defmodule ExmealWeb.UserView do
     }
   end
 
-  # def render("show.json", %{meal: %Meal{} = meal}) do
-  #   %{
-  #     message: "Refeição retornada com sucesso",
-  #     data: %{
-  #       id: meal.id,
-  #       description: meal.description,
-  #       date: DateTime.to_string(meal.date),
-  #       calories: meal.calories
-  #     }
-  #   }
-  # end
+  def render("show.json", %{user: %User{} = user}) do
+    %{
+      message: "Usuário retornado com sucesso",
+      data: %{
+        id: user.id,
+        name: user.name,
+        cpf: user.cpf,
+        email: user.email
+      }
+    }
+  end
 
-  # def render("show.json", %{meal: %{}}) do
-  #   %{
-  #     message: "Refeição retornada com sucesso",
-  #     data: %{}
-  #   }
-  # end
+  def render("show.json", %{user: %{}}) do
+    %{
+      message: "Usuário retornado com sucesso",
+      data: %{}
+    }
+  end
 
   def render("update.json", %{user_id: id}) do
     %{
@@ -34,10 +36,10 @@ defmodule ExmealWeb.UserView do
     }
   end
 
-  # def render("delete.json", _) do
-  #   %{
-  #     message: "Refeição removida com sucesso",
-  #     data: %{}
-  #   }
-  # end
+  def render("delete.json", _) do
+    %{
+      message: "Usuário removido com sucesso",
+      data: %{}
+    }
+  end
 end
