@@ -3,6 +3,7 @@ defmodule Exmeal.Facade do
 
   alias Exmeal.User.Create, as: CreateUser
   alias Exmeal.User.Update, as: UpdateUser
+  alias Exmeal.User.Get, as: GetUser
 
   defdelegate create_meal(params), to: Create, as: :call
   defdelegate get_meal(params), to: Get, as: :call
@@ -11,4 +12,5 @@ defmodule Exmeal.Facade do
 
   defdelegate create_user(params), to: CreateUser, as: :call
   defdelegate update_user(params), to: UpdateUser, as: :call
+  defdelegate get_user(params), to: GetUser, as: :call
 end
