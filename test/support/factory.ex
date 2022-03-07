@@ -46,4 +46,13 @@ defmodule Exmeal.Factory do
       email: "email@test.com"
     }
   end
+
+  def user_meal_params_factory do
+    %{
+      user_id: 1,
+      meals: [build_meal("canja"), build_meal("macarrão"), build_meal("pizza")]
+    }
+  end
+
+  defp build_meal(description), do: build(:meal_action_params, %{description: description})
 end
