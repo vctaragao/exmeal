@@ -6,7 +6,7 @@ defmodule Exmeal.Factory do
   def meal_params_factory do
     %{
       calories: 100.50,
-      date: DateTime.utc_now(),
+      date: DateTime.utc_now() |> DateTime.truncate(:second),
       description: "descrição"
     }
   end
