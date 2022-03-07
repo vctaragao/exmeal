@@ -9,6 +9,8 @@ defmodule Exmeal.User do
     field :email, :string
 
     timestamps()
+
+    has_many :meals, Exmeal.Meal
   end
 
   def changeset(user \\ %__MODULE__{}, params) do
@@ -21,4 +23,6 @@ defmodule Exmeal.User do
     |> validate_format(:cpf, ~r/\d{3}\.\d{3}\.\d{3}\-\d{2}/)
     |> handle_changeset()
   end
+
+  def build_meal_assoc(meal_params, user), do: Ecto.build_assoc(user, :meals, meal_params)
 end
