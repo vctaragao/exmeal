@@ -7,13 +7,21 @@ defmodule ExmealWeb.Controller.UserMeal.CreateUserMeal do
 
   def index(conn, params) do
     validation = %{
-      user_id: [type: :integer, required: true, length: [min: 0]],
-      meals: [required: true, cast_fun: &meals_parser/1]
+      user_id: [type: :integer, required: true, number: [min: 0]],
+      meals: [
+        required: true,
+        cast_func: fn meals ->
+          formated_meals =
+            Jason.decode!(meals)
+            |> Enum.map(&format_meal/1)
+
+          {:ok, formated_meals}
+        end
+      ]
     }
 
     with {:ok, validated_params} <- Params.validate(params, validation),
-         formated_params <- %{params | meals: Enum.map(validated_params[:meals], &format_meal/1)},
-         {:ok, _} <- Exmeal.create_user_meals(formated_params) do
+         {:ok, _} <- Exmeal.create_user_meals(validated_params) do
       conn
       |> put_status(:no_content)
       |> put_view(UserMealView)
@@ -21,15 +29,13 @@ defmodule ExmealWeb.Controller.UserMeal.CreateUserMeal do
     end
   end
 
-  def meals_parser(meal) do
-    IO.inspect(Jason.decode!(meal))
-  end
+  defp format_meal(meal) do
+    {:ok, date, _} = format_to_datetime(meal["date"], meal["hour"], meal["minute"])
 
-  defp format_meal(params) do
     %{
-      description: params[:description],
-      calories: params[:calories],
-      date: format_to_datetime(params[:date], params[:hour], params[:minute])
+      description: meal["description"],
+      calories: meal["calories"] / 1,
+      date: date
     }
   end
 end
