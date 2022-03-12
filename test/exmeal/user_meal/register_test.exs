@@ -12,7 +12,6 @@ defmodule Exmeal.UserMeal.RegisterTest do
   end
 
   describe "call/1" do
-    @tag run: true
     test "When given valid params register a list of meal to a user", %{user_id: id} do
       meal_list = [build_meal("canja"), build_meal("macarrão"), build_meal("pizza")]
       assert {:ok, message} = Register.call(%{user_id: id, meals: meal_list})
@@ -27,7 +26,6 @@ defmodule Exmeal.UserMeal.RegisterTest do
       assert "invalid params" == reason
     end
 
-    @tag run: true
     test "When given invalid meals returns an error", %{user_id: id} do
       meal_list = [
         build_meal("canja"),

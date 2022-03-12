@@ -1,0 +1,51 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "mix_task",
+            "name": "mix (Default task)",
+            "request": "launch",
+            "projectDir": "${workspaceRoot}"
+        },
+        {
+            "type": "mix_task",
+            "name": "mix test",
+            "request": "launch",
+            "task": "test",
+            "taskArgs": [
+                "--trace"
+            ],
+            "startApps": true,
+            "projectDir": "${workspaceRoot}",
+            "requireFiles": [
+                "test/**/test_helper.exs",
+                "test/**/*_test.exs"
+            ]
+        },
+        {
+            "type": "mix_task",
+            "name": "mix single test",
+            "request": "launch",
+            "task": "test",
+            "taskArgs": [
+                "test/exmeal_web/controllers/user_meal/create_user_meal_test.exs:16"
+            ],
+            "startApps": true,
+            "projectDir": "${workspaceRoot}",
+            "requireFiles": [
+                "test/**/test_helper.exs",
+                "test/exmeal_web/controllers/user_meal/create_user_meal_test.exs"
+            ]
+        },
+        {
+            "type": "mix_task",
+            "name": "phx.server",
+            "request": "launch",
+            "task": "phx.server",
+            "projectDir": "${workspaceRoot}"
+        }
+    ]
+}

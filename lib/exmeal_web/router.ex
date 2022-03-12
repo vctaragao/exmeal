@@ -3,6 +3,7 @@ defmodule ExmealWeb.Router do
 
   alias Controller.Meal.{CreateMeal, ShowMeal, UpdateMeal, DeleteMeal}
   alias Controller.User.{CreateUser, UpdateUser, ShowUser, DeleteUser}
+  alias Controller.UserMeal.{CreateUserMeal}
 
   pipeline(:api) do
     plug :accepts, ["json"]
@@ -20,6 +21,8 @@ defmodule ExmealWeb.Router do
     patch "/user/:id", UpdateUser, :index
     get "/user/:id", ShowUser, :index
     delete "/user/:id", DeleteUser, :index
+
+    post "/user-meals", CreateUserMeal, :index
   end
 
   # Enables LiveDashboard only for development
