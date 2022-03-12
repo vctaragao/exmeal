@@ -12,7 +12,7 @@ defmodule ExmealWeb.Controllers.UserMeal.CreateUserMealTest do
   end
 
   describe "call/2" do
-    @tag timeout: :infinity, run: true
+    @tag run: true
     test "When given valid params return success", %{conn: conn, params: params} do
       response = post(conn, Routes.create_user_meal_path(conn, :index, params))
 

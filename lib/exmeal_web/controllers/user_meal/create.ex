@@ -6,27 +6,29 @@ defmodule ExmealWeb.Controller.UserMeal.CreateUserMeal do
   alias ExmealWeb.UserMealView
 
   def index(conn, params) do
-    validation = %{
-      user_id: [type: :integer, required: true, number: [min: 0]],
-      meals: [
-        required: true,
-        cast_func: fn meals ->
-          formated_meals =
-            Jason.decode!(meals)
-            |> Enum.map(&format_meal/1)
-
-          {:ok, formated_meals}
-        end
-      ]
-    }
-
-    with {:ok, validated_params} <- Params.validate(params, validation),
+    with {:ok, validation} <- build_validation_schema(),
+         {:ok, validated_params} <- Params.validate(params, validation),
          {:ok, _} <- Exmeal.create_user_meals(validated_params) do
       conn
       |> put_status(:no_content)
       |> put_view(UserMealView)
       |> render("create.json")
     end
+  end
+
+  defp build_validation_schema() do
+    validation = %{
+      user_id: [type: :integer, required: true, number: [min: 0]],
+      meals: [required: true, cast_func: &cast_meal/1]
+    }
+
+    {:ok, validation}
+  end
+
+  defp cast_meal(meals) do
+    formated_meals = Jason.decode!(meals) |> Enum.map(&format_meal/1)
+
+    {:ok, formated_meals}
   end
 
   defp format_meal(meal) do
